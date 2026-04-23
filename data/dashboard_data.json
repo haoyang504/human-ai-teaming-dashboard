@@ -3,7 +3,7 @@
     "total_works": 1252,
     "total_authors": 4508,
     "total_institutions": 1292,
-    "total_countries": 86,
+    "total_countries": 83,
     "total_citations": 50226,
     "oa_count": 1237,
     "year_range": [
@@ -511,16 +511,16 @@
       "count": 1323
     },
     {
+      "code": "CN",
+      "count": 343
+    },
+    {
       "code": "GB",
       "count": 342
     },
     {
       "code": "DE",
       "count": 315
-    },
-    {
-      "code": "CN",
-      "count": 272
     },
     {
       "code": "AU",
@@ -565,10 +565,6 @@
     {
       "code": "KR",
       "count": 55
-    },
-    {
-      "code": "HK",
-      "count": 51
     },
     {
       "code": "JP",
@@ -691,10 +687,6 @@
       "count": 11
     },
     {
-      "code": "TW",
-      "count": 11
-    },
-    {
       "code": "QA",
       "count": 11
     },
@@ -712,10 +704,6 @@
     },
     {
       "code": "IR",
-      "count": 9
-    },
-    {
-      "code": "MO",
       "count": 9
     },
     {
@@ -1143,7 +1131,7 @@
     },
     {
       "name": "Hong Kong University of Science and Technology",
-      "country": "HK",
+      "country": "CN",
       "count": 23
     },
     {
@@ -9926,6 +9914,11 @@
       "weight": 35
     },
     {
+      "source": "CN",
+      "target": "US",
+      "weight": 26
+    },
+    {
       "source": "DE",
       "target": "US",
       "weight": 25
@@ -9941,9 +9934,9 @@
       "weight": 20
     },
     {
-      "source": "CN",
-      "target": "US",
-      "weight": 16
+      "source": "AU",
+      "target": "CN",
+      "weight": 14
     },
     {
       "source": "AU",
@@ -9954,6 +9947,11 @@
       "source": "DE",
       "target": "NL",
       "weight": 14
+    },
+    {
+      "source": "CN",
+      "target": "GB",
+      "weight": 12
     },
     {
       "source": "DE",
@@ -9982,11 +9980,6 @@
     },
     {
       "source": "AU",
-      "target": "CN",
-      "weight": 11
-    },
-    {
-      "source": "AU",
       "target": "GB",
       "weight": 10
     },
@@ -10007,22 +10000,17 @@
     },
     {
       "source": "CN",
-      "target": "GB",
+      "target": "SG",
+      "weight": 9
+    },
+    {
+      "source": "CN",
+      "target": "DE",
       "weight": 8
     },
     {
       "source": "FR",
       "target": "US",
-      "weight": 8
-    },
-    {
-      "source": "HK",
-      "target": "US",
-      "weight": 8
-    },
-    {
-      "source": "CN",
-      "target": "SG",
       "weight": 8
     },
     {
@@ -10053,11 +10041,6 @@
     {
       "source": "AT",
       "target": "DE",
-      "weight": 6
-    },
-    {
-      "source": "CN",
-      "target": "HK",
       "weight": 6
     },
     {
@@ -10093,11 +10076,6 @@
     {
       "source": "FR",
       "target": "NL",
-      "weight": 5
-    },
-    {
-      "source": "GB",
-      "target": "HK",
       "weight": 5
     },
     {
@@ -10153,11 +10131,6 @@
     {
       "source": "AU",
       "target": "IT",
-      "weight": 4
-    },
-    {
-      "source": "DE",
-      "target": "HK",
       "weight": 4
     },
     {
@@ -10217,12 +10190,12 @@
     },
     {
       "source": "AU",
-      "target": "HK",
+      "target": "IN",
       "weight": 3
     },
     {
-      "source": "AU",
-      "target": "IN",
+      "source": "CN",
+      "target": "NL",
       "weight": 3
     },
     {
@@ -10281,21 +10254,6 @@
       "weight": 3
     },
     {
-      "source": "CN",
-      "target": "MO",
-      "weight": 3
-    },
-    {
-      "source": "HK",
-      "target": "SG",
-      "weight": 3
-    },
-    {
-      "source": "CN",
-      "target": "DE",
-      "weight": 3
-    },
-    {
       "source": "DE",
       "target": "GR",
       "weight": 3
@@ -10318,6 +10276,16 @@
     {
       "source": "GB",
       "target": "SG",
+      "weight": 3
+    },
+    {
+      "source": "FI",
+      "target": "GB",
+      "weight": 3
+    },
+    {
+      "source": "CN",
+      "target": "KR",
       "weight": 3
     }
   ],
@@ -10343,14 +10311,19 @@
       "weight": 35
     },
     {
+      "source": "CN",
+      "target": "US",
+      "weight": 35
+    },
+    {
       "source": "US",
       "target": "AU",
       "weight": 25
     },
     {
-      "source": "CN",
-      "target": "US",
-      "weight": 25
+      "source": "US",
+      "target": "CN",
+      "weight": 23
     },
     {
       "source": "DE",
@@ -10365,6 +10338,11 @@
     {
       "source": "US",
       "target": "IT",
+      "weight": 19
+    },
+    {
+      "source": "CN",
+      "target": "AU",
       "weight": 19
     },
     {
@@ -10398,8 +10376,18 @@
       "weight": 16
     },
     {
-      "source": "US",
-      "target": "HK",
+      "source": "DE",
+      "target": "CN",
+      "weight": 16
+    },
+    {
+      "source": "CN",
+      "target": "GB",
+      "weight": 15
+    },
+    {
+      "source": "CN",
+      "target": "DE",
       "weight": 15
     },
     {
@@ -10410,11 +10398,6 @@
     {
       "source": "DE",
       "target": "FR",
-      "weight": 14
-    },
-    {
-      "source": "DE",
-      "target": "HK",
       "weight": 14
     },
     {
@@ -10464,7 +10447,7 @@
     },
     {
       "source": "CN",
-      "target": "AU",
+      "target": "IT",
       "weight": 12
     },
     {
@@ -10483,13 +10466,8 @@
       "weight": 11
     },
     {
-      "source": "CN",
-      "target": "GB",
-      "weight": 11
-    },
-    {
-      "source": "HK",
-      "target": "US",
+      "source": "AU",
+      "target": "CN",
       "weight": 11
     },
     {
@@ -10508,19 +10486,19 @@
       "weight": 10
     },
     {
-      "source": "GB",
-      "target": "IT",
-      "weight": 10
-    },
-    {
       "source": "AU",
       "target": "GB",
       "weight": 10
     },
     {
-      "source": "CN",
-      "target": "DE",
+      "source": "GB",
+      "target": "IT",
       "weight": 10
+    },
+    {
+      "source": "CN",
+      "target": "NL",
+      "weight": 9
     },
     {
       "source": "NL",
@@ -10548,13 +10526,13 @@
       "weight": 9
     },
     {
-      "source": "KR",
-      "target": "GB",
-      "weight": 8
+      "source": "CN",
+      "target": "FR",
+      "weight": 9
     },
     {
-      "source": "AU",
-      "target": "HK",
+      "source": "KR",
+      "target": "GB",
       "weight": 8
     },
     {
@@ -10568,13 +10546,23 @@
       "weight": 8
     },
     {
+      "source": "GB",
+      "target": "CN",
+      "weight": 8
+    },
+    {
       "source": "AE",
       "target": "GB",
       "weight": 8
     },
     {
-      "source": "CN",
-      "target": "IT",
+      "source": "IT",
+      "target": "CN",
+      "weight": 8
+    },
+    {
+      "source": "TR",
+      "target": "AU",
       "weight": 8
     },
     {
@@ -10589,38 +10577,18 @@
     },
     {
       "source": "TR",
-      "target": "AU",
+      "target": "CN",
       "weight": 8
     },
     {
       "source": "CN",
-      "target": "HK",
+      "target": "IN",
       "weight": 8
     },
     {
-      "source": "CA",
-      "target": "AU",
-      "weight": 7
-    },
-    {
-      "source": "US",
-      "target": "CN",
-      "weight": 7
-    },
-    {
-      "source": "FI",
-      "target": "US",
-      "weight": 7
-    },
-    {
-      "source": "GB",
-      "target": "NL",
-      "weight": 7
-    },
-    {
-      "source": "NL",
-      "target": "DE",
-      "weight": 7
+      "source": "CN",
+      "target": "SA",
+      "weight": 8
     }
   ]
 }

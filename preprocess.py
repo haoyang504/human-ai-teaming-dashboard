@@ -30,6 +30,16 @@ kw_map     = {r["keyword_id"]: r["display_name"] for r in keywords}
 src_map    = {r["source_id"]: r for r in sources}
 work_map   = {r["work_id"]: r for r in works}
 
+# ── Remap HK / TW / Macau → CN ───────────────────────────────────────────────
+# Merge these into China before any aggregation so all counts are unified.
+REMAP_CC = {"HK": "CN", "TW": "CN", "MO": "CN"}
+for inst in institutions:
+    if inst.get("country_code") in REMAP_CC:
+        inst["country_code"] = REMAP_CC[inst["country_code"]]
+# Re-build inst_map after remap
+inst_map = {r["institution_id"]: r for r in institutions}
+
+
 # work_id → set of country codes for that work
 work_countries: dict[str, set] = collections.defaultdict(set)
 # work_id → set of institution names
