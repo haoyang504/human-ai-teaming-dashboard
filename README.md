@@ -33,7 +33,9 @@ Data retrieved from the **[OpenAlex API](https://api.openalex.org/works)**.
 AND ('LLM' OR 'large language model')
 ```
 
-**Final dataset: 1,252 papers** across 86 countries · 50,226 total citations · 98.8% Open Access
+**Final dataset: 1,252 papers** across 83 countries · 50,226 total citations · 98.8% Open Access
+
+> Note: Hong Kong, Taiwan, and Macau data are merged into China (CN).
 
 ---
 
