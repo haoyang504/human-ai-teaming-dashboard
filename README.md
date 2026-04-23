@@ -27,27 +27,11 @@ Data was retrieved from the **[OpenAlex API](https://openalex.org)** — a free,
 
 **Query:** Papers related to *Human-AI Teaming*, *Human-AI Collaboration*, and *AI-augmented work*, filtered to 2022–2025.
 
-**Dataset:**
-
-| File | Description | Records |
-|------|-------------|---------|
-| `work.csv` | Paper metadata (title, year, topic, FWCI, citations, abstract) | 1,252 |
-| `author.csv` | Author names and ORCIDs | 4,508 |
-| `authorship.csv` | Author ↔ paper ↔ institution links | 4,788 |
-| `institution.csv` | Institution names and country codes | 1,292 |
-| `keyword.csv` | OpenAlex keyword taxonomy | ~800 |
-| `work_keyword.csv` | Paper ↔ keyword links | 11,895 |
-| `source.csv` | Journal and venue metadata | ~700 |
-| `work_source.csv` | Paper ↔ journal links | ~700 |
-| `work_reference.csv` | Citation pairs within corpus | ~42,000 |
-
 **Key statistics:**
 - **Date range:** 2022–2025
 - **Countries represented:** 86
 - **Total citations:** 50,226
 - **Open Access:** 98.8% of papers
-
-Raw CSVs were preprocessed into `data/dashboard_data.json` using `preprocess.py`, which aggregates country co-authorship networks, citation flows, topic distributions, and institution rankings.
 
 ---
 
