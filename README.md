@@ -23,15 +23,27 @@ A scrollable, single-page dashboard with six interactive sections:
 
 ## Data Collection
 
-Data was retrieved from the **[OpenAlex API](https://openalex.org)** — a free, open index of global scholarly works.
+Data retrieved from the **[OpenAlex API](https://api.openalex.org/works)**.
 
-**Query:** Papers related to *Human-AI Teaming*, *Human-AI Collaboration*, and *AI-augmented work*, filtered to 2022–2025.
+**Core filters:** Publication Year: 2022–2026 · Type: `article`
 
-**Key statistics:**
-- **Date range:** 2022–2025
-- **Countries represented:** 86
-- **Total citations:** 50,226
-- **Open Access:** 98.8% of papers
+**Boolean search query:**
+```
+('human-AI' OR 'human AI') AND ('team' OR 'collaborat')
+AND ('LLM' OR 'large language model')
+```
+
+**Cleaning pipeline:**
+1. Drop noisy/bloated metadata → ~11,300 rows
+2. Quality filter: `FWCI > 1` (high-impact papers only)
+3. Validity filter: `is_retracted == False` → ~6,000 rows
+4. Thematic filter: paper must match ≥ 1 Human-Agent Teaming sub-topic:
+   - AI in Service Interactions · Explainable AI (XAI) · Intelligent Tutoring Systems & Adaptive Learning
+   - Ethics and Social Impacts of AI · Digital Mental Health Interventions · Human-Computer Interaction
+   - Human-Robot Interaction · Trust in Automation · Decision Support
+   - Cognitive Systems Engineering · Autonomous Agents
+
+**Final dataset: 1,252 papers** across 86 countries · 50,226 total citations · 98.8% Open Access
 
 ---
 
