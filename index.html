@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Human-AI Teaming Research Landscape</title>
+  <meta name="description"
+    content="An interactive data story board exploring 1,252 research papers on Human-AI Teaming from OpenAlex (2022–2025)." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=Inter:wght@300;400;500;600&display=swap"
+    rel="stylesheet" />
+  <link rel="stylesheet" href="style.css" />
+</head>
+
+<body>
+
+  <!-- ═══════════════════════════════════════════════════════════
+     NAV
+═══════════════════════════════════════════════════════════ -->
+  <nav id="topnav">
+    <div class="nav-brand">Human-AI Teaming Research <span class="brand-accent">2022–2025</span></div>
+    <div class="nav-links">
+      <a href="#growth">Growth</a>
+      <a href="#coauthor-map">Co-authorship</a>
+      <a href="#citation-map">Citations</a>
+      <a href="#topics">Topics</a>
+      <a href="#keywords">Keywords</a>
+      <a href="#impact">Impact</a>
+    </div>
+  </nav>
+
+  <!-- ═══════════════════════════════════════════════════════════
+     HERO
+═══════════════════════════════════════════════════════════ -->
+  <section id="hero">
+    <div class="particles" id="particles"></div>
+    <div class="hero-content">
+      <div class="hero-eyebrow">OpenAlex · Data Story Board</div>
+      <h1 class="hero-title">The Rise of<br /><span class="hero-gradient">Human-AI Teaming</span></h1>
+      <p class="hero-subtitle">A global snapshot of 1,252 research papers, 4,508 scholars, and the ideas reshaping how
+        humans and machines collaborate.</p>
+
+      <div class="stats-row" id="stat-counters">
+        <div class="stat-card">
+          <div class="stat-number" data-target="1252" id="stat-works">0</div>
+          <div class="stat-label">Papers</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-number" data-target="4508" id="stat-authors">0</div>
+          <div class="stat-label">Researchers</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-number" data-target="86" id="stat-countries">0</div>
+          <div class="stat-label">Countries</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-number" data-target="50226" id="stat-citations">0</div>
+          <div class="stat-label">Total Citations</div>
+        </div>
+      </div>
+
+      <div class="scroll-hint">
+        <span>Scroll to explore</span>
+        <div class="scroll-arrow"></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════════════════════════════════════════════════
+     SECTION 1 — GROWTH
+═══════════════════════════════════════════════════════════ -->
+  <section id="growth" class="story-section">
+    <div class="section-inner">
+      <div class="section-header reveal">
+        <div class="section-tag">Growth</div>
+        <h2>A Field That Exploded</h2>
+        <p class="section-desc">From 41 papers in 2022 to 473 in 2024 — the field expanded <strong>11× in just three
+            years</strong>, driven by breakthroughs in large language models.</p>
+      </div>
+      <div class="chart-card reveal" id="growth-card">
+        <div class="chart-annotation" id="growth-annotation">
+          <span class="anno-marker">▲</span>
+          <span>ChatGPT launched Nov 2022 — papers surged the following year</span>
+        </div>
+        <svg id="growth-chart"></svg>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════════════════════════════════════════════════
+     SECTION 2 — GLOBAL CO-AUTHORSHIP MAP
+═══════════════════════════════════════════════════════════ -->
+  <section id="coauthor-map" class="story-section dark-section">
+    <div class="section-inner wide">
+      <div class="section-header reveal">
+        <div class="section-tag tag-cyan">Global Network</div>
+        <h2>A World Connected by Co-authorship</h2>
+        <p class="section-desc">Each arc represents countries whose researchers <strong>co-authored papers
+            together</strong>. Arc thickness scales with collaboration frequency. The US, UK, Germany and China form the
+          densest hubs.</p>
+      </div>
+      <div class="map-wrapper reveal">
+        <div class="map-legend" id="coauthor-legend">
+          <div class="legend-title">Co-authored Papers</div>
+          <div class="legend-scale" id="coauthor-scale"></div>
+        </div>
+        <svg id="coauthor-map-svg"></svg>
+        <div class="map-tooltip" id="coauthor-tooltip"></div>
+      </div>
+      <div class="map-stats reveal" id="coauthor-stats">
+        <div class="mstat"><span class="mstat-n" id="cs-pairs">—</span><br />Country Pairs</div>
+        <div class="mstat"><span class="mstat-n" id="cs-top">—</span><br />Top Partnership</div>
+        <div class="mstat"><span class="mstat-n" id="cs-hub">—</span><br />Most Connected Country</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════════════════════════════════════════════════
+     SECTION 3 — GLOBAL CITATION MAP
+═══════════════════════════════════════════════════════════ -->
+  <section id="citation-map" class="story-section">
+    <div class="section-inner wide">
+      <div class="section-header reveal">
+        <div class="section-tag tag-amber">Citation Flow</div>
+        <h2>How Knowledge Crosses Borders</h2>
+        <p class="section-desc">Directed arcs show <strong>cross-country citation flows</strong> within our corpus. A
+          thicker arc from A to B means more papers from country A cite work from country B — revealing whose ideas are
+          shaping the field.</p>
+      </div>
+      <div class="map-wrapper reveal">
+        <div class="map-legend" id="citation-legend">
+          <div class="legend-title">Citations (directed)</div>
+          <div class="legend-scale" id="citation-scale"></div>
+        </div>
+        <svg id="citation-map-svg"></svg>
+        <div class="map-tooltip" id="citation-tooltip"></div>
+        <div class="direction-note">→ Arrow direction = citing → cited</div>
+      </div>
+      <div class="map-stats reveal" id="citation-stats">
+        <div class="mstat"><span class="mstat-n" id="ct-pairs">—</span><br />Citation Flows</div>
+        <div class="mstat"><span class="mstat-n" id="ct-top">—</span><br />Strongest Flow</div>
+        <div class="mstat"><span class="mstat-n" id="ct-total">—</span><br />Total Citations</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════════════════════════════════════════════════
+     SECTION 4 — TOPICS BUBBLE
+═══════════════════════════════════════════════════════════ -->
+  <section id="topics" class="story-section dark-section">
+    <div class="section-inner">
+      <div class="section-header reveal">
+        <div class="section-tag tag-violet">Research Topics</div>
+        <h2>What Are We Talking About?</h2>
+        <p class="section-desc">Ethics &amp; Society leads with 264 papers, followed by AI in Healthcare &amp;
+          Education. <strong>Click a bubble</strong> to see top papers in that topic.</p>
+      </div>
+      <div class="bubble-layout reveal">
+        <div id="bubble-chart"></div>
+        <div class="bubble-panel" id="bubble-panel">
+          <div class="panel-title" id="panel-topic-title">Select a topic</div>
+          <div class="panel-papers" id="panel-papers">
+            <p class="panel-hint">Click any bubble to see top papers in that research area.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════════════════════════════════════════════════
+     SECTION 5 — KEYWORDS
+═══════════════════════════════════════════════════════════ -->
+  <section id="keywords" class="story-section">
+    <div class="section-inner">
+      <div class="section-header reveal">
+        <div class="section-tag tag-cyan">Keywords</div>
+        <h2>The Language of Human-AI Teaming</h2>
+        <p class="section-desc">Computer Science and Psychology dominate — reflecting the deeply
+          <strong>interdisciplinary nature</strong> of this field spanning cognitive science, ethics, engineering, and
+          medicine.
+        </p>
+      </div>
+      <div class="chart-card reveal" id="kw-card">
+        <svg id="keyword-chart"></svg>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════════════════════════════════════════════════
+     SECTION 6 — INSTITUTIONS & IMPACT
+═══════════════════════════════════════════════════════════ -->
+  <section id="impact" class="story-section dark-section">
+    <div class="section-inner">
+      <div class="section-header reveal">
+        <div class="section-tag tag-amber">Impact</div>
+        <h2>Who's Leading the Research?</h2>
+        <p class="section-desc">Top institutions by authorship count, and a citation impact lens — <strong>FWCI vs.
+            citations</strong> colored by publication year.</p>
+      </div>
+      <div class="impact-grid reveal">
+        <div class="chart-card" id="lollipop-card">
+          <div class="chart-subtitle">Top 20 Institutions</div>
+          <svg id="lollipop-chart"></svg>
+        </div>
+        <div class="chart-card" id="scatter-card">
+          <div class="chart-subtitle">Citation Impact (FWCI vs. Citations)</div>
+          <div class="scatter-legend" id="scatter-legend"></div>
+          <svg id="scatter-chart"></svg>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════════════════════════════════════════════════
+     FOOTER
+═══════════════════════════════════════════════════════════ -->
+  <footer>
+    <div class="footer-inner">
+      <div class="footer-brand">Human-AI Teaming Research Landscape</div>
+      <p>Data sourced from <a href="https://openalex.org" target="_blank">OpenAlex</a> · 1,252 papers · 2022–2025</p>
+      <p class="footer-credit">Built as a data story board · Human-AI Teaming Research Field</p>
+    </div>
+  </footer>
+
+  <!-- ── Scripts ──────────────────────────────────────────────── -->
+  <script src="https://d3js.org/d3.v7.min.js"></script>
+  <script src="https://d3js.org/topojson.v3.min.js"></script>
+  <script src="app.js"></script>
+</body>
+
+</html>

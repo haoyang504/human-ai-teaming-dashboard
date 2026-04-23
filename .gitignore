@@ -1,0 +1,13 @@
+# Raw data CSVs — not needed for the web app
+data/raw/
+
+# macOS
+.DS_Store
+
+# Python
+__pycache__/
+*.pyc
+*.pyo
+
+# Preprocessing script (optional for deployment)
+# preprocess.py
