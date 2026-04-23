@@ -376,7 +376,7 @@ function drawNodes(svg, proj, countryData, color, scale) {
     });
 }
 
-function drawCountryNodes(svg, proj, countryData, centroids, color) {
+function drawCountryNodes(svg, proj, countryData, centroids, color, tooltip) {
     const maxC = d3.max(countryData, d => d.count);
     const rScale = d3.scaleSqrt().domain([0, maxC]).range([2, 14]);
 
@@ -386,35 +386,60 @@ function drawCountryNodes(svg, proj, countryData, centroids, color) {
         const p = proj(cent);
         if (!p) return;
 
+        const r = rScale(d.count);
+
+        // Visual circle — pointer-events:none so it doesn't block the map
         svg.append("circle")
             .attr("cx", p[0]).attr("cy", p[1])
-            .attr("r", rScale(d.count))
+            .attr("r", r)
             .attr("fill", color)
             .attr("fill-opacity", 0.25)
             .attr("stroke", color)
             .attr("stroke-width", 1.5)
             .attr("stroke-opacity", 0.8)
+            .style("pointer-events", "none")
             .style("filter", `drop-shadow(0 0 4px ${color})`);
 
-        // Pulse ring
+        // Pulse ring — also non-interactive
         if (d.count > 100) {
             const ring = svg.append("circle")
                 .attr("cx", p[0]).attr("cy", p[1])
-                .attr("r", rScale(d.count))
+                .attr("r", r)
                 .attr("fill", "none")
                 .attr("stroke", color)
                 .attr("stroke-opacity", 0.5)
-                .attr("stroke-width", 1);
+                .attr("stroke-width", 1)
+                .style("pointer-events", "none");
 
             function pulse() {
-                ring.attr("r", rScale(d.count))
+                ring.attr("r", r)
                     .attr("stroke-opacity", 0.6)
                     .transition().duration(1800).ease(d3.easeCubicOut)
-                    .attr("r", rScale(d.count) + 12)
+                    .attr("r", r + 12)
                     .attr("stroke-opacity", 0)
                     .on("end", pulse);
             }
             pulse();
+        }
+
+        // Invisible hit area — larger radius for easy hovering
+        if (tooltip) {
+            svg.append("circle")
+                .attr("cx", p[0]).attr("cy", p[1])
+                .attr("r", Math.max(r + 8, 14))  // at least 14px hit radius
+                .attr("fill", "transparent")
+                .attr("stroke", "none")
+                .style("cursor", "pointer")
+                .on("mouseover", () => {
+                    tooltip.style.opacity = 1;
+                    tooltip.innerHTML = `<div class="tt-title">${ccName(d.code)}</div>
+                        <div class="tt-row">Authorships: <span class="tt-accent">${d.count.toLocaleString()}</span></div>`;
+                })
+                .on("mousemove", evt => {
+                    tooltip.style.left = evt.offsetX + 14 + "px";
+                    tooltip.style.top = evt.offsetY - 44 + "px";
+                })
+                .on("mouseout", () => tooltip.style.opacity = 0);
         }
     });
 }
@@ -432,13 +457,10 @@ function drawCoauthorMap(data, world) {
         "coauthor-map-svg", world, data.country_data, colorScale, tooltipEl
     );
 
-    // Legend gradient
-    buildLegend("coauthor-scale", colorScale, d3.max(data.country_data, d => d.count), VIOLET_L);
-
     // Draw all co-authorship links
     const links = data.coauthor_links;
     drawArcs(svg, proj, links, data.country_centroids, CYAN_L, 0.7, tooltipEl, false, W, H);
-    drawCountryNodes(svg, proj, data.country_data.slice(0, 30), data.country_centroids, VIOLET_L);
+    drawCountryNodes(svg, proj, data.country_data.slice(0, 30), data.country_centroids, VIOLET_L, tooltipEl);
 
     // Stats
     document.getElementById("cs-pairs").textContent = data.coauthor_links.length;
@@ -468,12 +490,10 @@ function drawCitationMap(data, world) {
         "citation-map-svg", world, data.country_data, colorScale, tooltipEl
     );
 
-    buildLegend("citation-scale", colorScale, d3.max(data.country_data, d => d.count), AMBER_L);
-
     // Draw all citation links
     const links = data.citation_links;
     drawArcs(svg, proj, links, data.country_centroids, AMBER_L, 0.75, tooltipEl, true, W, H);
-    drawCountryNodes(svg, proj, data.country_data.slice(0, 25), data.country_centroids, AMBER_L);
+    drawCountryNodes(svg, proj, data.country_data.slice(0, 25), data.country_centroids, AMBER_L, tooltipEl);
 
     // Stats
     document.getElementById("ct-pairs").textContent = data.citation_links.length;
